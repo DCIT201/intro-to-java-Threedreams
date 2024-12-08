@@ -1,0 +1,40 @@
+public class TemperatureConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            // Display the menu to the user
+            System.out.println("Welcome to the Temperature Converter!");
+            System.out.println("Choose an option:");
+            System.out.println("1. Convert Celsius to Fahrenheit");
+            System.out.println("2. Convert Fahrenheit to Celsius");
+
+            // Get the user's choice and validate it
+            int choice = scanner.nextInt();
+            if (choice != 1 && choice != 2) {
+                System.out.println("Invalid choice! Please restart the program and choose 1 or 2.");
+                return;
+            }
+
+            // Prompt the user to enter the temperature value
+            System.out.print("Enter the temperature value to convert: ");
+            double inputTemp = scanner.nextDouble();
+
+            double convertedTemp;
+            if (choice == 1) {
+                // Convert Celsius to Fahrenheit
+                convertedTemp = (inputTemp * 9 / 5) + 32;
+                System.out.printf("%.2f°C is equal to %.2f°F\n", inputTemp, convertedTemp);
+            } else {
+                // Convert Fahrenheit to Celsius
+                convertedTemp = (inputTemp - 32) * 5 / 9;
+                System.out.printf("%.2f°F is equal to %.2f°C\n", inputTemp, convertedTemp);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input! Please enter numbers only for temperature and menu options.");
+        } finally {
+            System.out.println("Thank you for using the Temperature Converter!");
+            scanner.close();
+        }
+    }
+}
